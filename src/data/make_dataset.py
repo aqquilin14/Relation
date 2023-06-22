@@ -41,8 +41,8 @@ def main(input_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     path = get_project_root()
-    input_filepath = path + '/' + input_filepath
-    output_filepath = path + '/' + input_filepath
+    input_filepath = str(path) + '/' + input_filepath
+    output_filepath = str(path) + '/' + output_filepath
     directory = os.fsencode(input_filepath)
 
     data_for_span = []
