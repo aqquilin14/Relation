@@ -4,6 +4,10 @@ import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 import os,json
+from pathlib import Path
+
+def get_project_root() -> Path:
+    return Path(__file__).parent.parent.parent
 
 
 def load_data(file):
@@ -36,6 +40,9 @@ def main(input_filepath, output_filepath):
     """ Runs data processing scripts to turn raw data from (../raw) into
         cleaned data ready to be analyzed (saved in ../processed).
     """
+    path = get_project_root()
+    input_filepath = path + '/' + input_filepath
+    output_filepath = path + '/' + input_filepath
     directory = os.fsencode(input_filepath)
 
     data_for_span = []
@@ -53,6 +60,7 @@ def main(input_filepath, output_filepath):
                 data_for_ner.append([j_line["text"],{"entities" : remove_overlap(entt)}])
     save_data(output_filepath + "/overlap.json", data_for_span)
     save_data(output_filepath + "/non-overlap.json", data_for_ner)
+
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
 
