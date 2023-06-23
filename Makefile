@@ -35,9 +35,13 @@ data: requirements
 ## train model
 trainNer :
 	$(PYTHON_INTERPRETER) src/models/ner/train_model.py data/processed tmp/ner
+	$(PYTHON_INTERPRETER) -m spacy train models/ner/config.cfg --output models/ner/ --paths.train tmp/ner/train.spacy --paths.dev tmp/ner/test.spacy 
 
 trainSpancat :
 	$(PYTHON_INTERPRETER) src/models/spancat/train_model.py data/processed tmp/spancat
+	$(PYTHON_INTERPRETER) -m spacy train models/spancat/config.cfg --output models/spancat/ --paths.train tmp/spancat/train.spacy --paths.dev tmp/spancat/test.spacy 
+
+
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
