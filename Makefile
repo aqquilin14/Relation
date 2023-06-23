@@ -27,9 +27,17 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw/ data/processed
-
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw/train data/processed/train
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw/test data/processed/test
 ## Delete all compiled Python files
+
+
+## train model
+trainNer :
+	$(PYTHON_INTERPRETER) src/models/ner/train_model.py data/processed tmp/ner
+
+trainSpancat :
+	$(PYTHON_INTERPRETER) src/models/spancat/train_model.py data/processed tmp/spancat
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete

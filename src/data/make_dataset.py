@@ -41,8 +41,8 @@ def main(input_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     path = get_project_root()
-    input_filepath = str(path) + '/' + input_filepath
-    output_filepath = str(path) + '/' + output_filepath
+    input_filepath = str(path) + '/' + input_filepath + '/'
+    output_filepath = str(path) + '/' + output_filepath + '/'
     directory = os.fsencode(input_filepath)
 
     data_for_span = []
@@ -58,8 +58,8 @@ def main(input_filepath, output_filepath):
                     entt.append([ent["start_offset"], ent["end_offset"], ent["label"]])
                 data_for_span.append([j_line["text"],{"entities" : entt}])
                 data_for_ner.append([j_line["text"],{"entities" : remove_overlap(entt)}])
-    save_data(output_filepath + "/overlap.json", data_for_span)
-    save_data(output_filepath + "/non-overlap.json", data_for_ner)
+    save_data(output_filepath + "overlap.json", data_for_span)
+    save_data(output_filepath + "non-overlap.json", data_for_ner)
 
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
