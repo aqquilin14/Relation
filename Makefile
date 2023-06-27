@@ -33,6 +33,7 @@ data: requirements
 
 
 ## train model
+
 trainNer :
 	$(PYTHON_INTERPRETER) src/models/ner/train_model.py data/processed tmp/ner
 	$(PYTHON_INTERPRETER) -m spacy train models/ner/config.cfg --output models/ner/ --paths.train tmp/ner/train.spacy --paths.dev tmp/ner/test.spacy 
@@ -41,6 +42,11 @@ trainSpancat :
 	$(PYTHON_INTERPRETER) src/models/spancat/train_model.py data/processed tmp/spancat
 	$(PYTHON_INTERPRETER) -m spacy train models/spancat/config.cfg --output models/spancat/ --paths.train tmp/spancat/train.spacy --paths.dev tmp/spancat/test.spacy 
 
+getRepo :
+	cd data && cd raw && git clone git@git.corp.adobe.com:AdobeDocs/experience-platform.en.git
+	
+predictEntity:
+	$(PYTHON_INTERPRETER) src/models/predict_model.py data/raw data/processed
 
 clean:
 	find . -type f -name "*.py[co]" -delete
