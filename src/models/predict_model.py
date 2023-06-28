@@ -28,14 +28,6 @@ def write_json(new_data, filename, str):
         file.seek(0)
         json.dump(file_data, file, indent = 4)
 
-def finalEntity(ent1, ent2) :
-    entity = []
-    for ent in ent1 :
-        entity.append(ent)
-    for ent in ent2 :
-        entity.append(ent)
-    return entity
-
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -49,41 +41,42 @@ def main(input_filepath, output_filepath):
     path = get_project_root()
     input_filepath = str(path) + '/' + input_filepath
     output_filepath = str(path) + '/' + output_filepath + '/'
+
     output = { "output" : []}
     save_data(output_filepath + "output.json", output)
     cnt = 0
+
     for root,d_files, f_names in os.walk(path, topdown=False):
         for mdF in f_names:
             mdYes =  mdF.endswith(".md",len(mdF)-3,len(mdF))
             if(mdYes) :
                 rootNew = root
                 rootNew = rootNew.removeprefix(str(path))
+
                 with open(root + "/" + mdF, "r") as f:
                     text = f.read()
+
                     trained_ner = spacy.load("models/ner/model-best")
                     trained_spancat = spacy.load("models/spancat/model-best")
+
                     doc1 = trained_ner(text)
                     doc2 = trained_spancat(text)
-                    ent1 = []
-                    ent2 = []
+                    ent = []
+
                     for ents in doc1.ents :
-                        ent1.append([ents.start_char, ents.end_char, ents.label_])
+                        ent.append([ents.text, ents.start_char, ents.end_char, ents.label_])
+
                     spans = doc2.spans["sc"]
                     try : 
                         for span, confidence in zip(spans, spans.attrs["scores"]):
-                            entity = []
-                            for ents in ent1 :
-                                if(span.start_char == ents[0] and span.end_char == ents[1]) :
-                                    entity = ents
-                            if(len(entity) and round((100*confidence)) > 80):
-                                ent2.append([span.start_char, span.end_char, span.label_])
-                                ent1.remove(entity)
+                            if(round((100*confidence)) > 80):
+                                ent.append([span.text, span.start_char, span.end_char, span.label_])
                     except KeyError:
-                        print("has key error")
+                        print(root + '/' + mdF, "has key error")
                     y = {
                         "fileName" : root + "/" + mdF,
                         "text" : text,
-                        "entities" : finalEntity(ent1,ent2)
+                        "entities" : ent
                     }
                     write_json(y, output_filepath + "output.json", "output")
                     cnt += 1
