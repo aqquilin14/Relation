@@ -1,12 +1,11 @@
 import click
 import logging
-from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
-import json
 from pathlib import Path
 import os
 import spacy
 import json
+
 
 def get_project_root() -> Path:
     return Path(__file__).parent.parent.parent
@@ -17,9 +16,11 @@ def load_data(file):
         data = json.load(f)
     return data
 
+
 def save_data(file, data):
     with open(file, 'w', encoding="utf-8") as f:
-        json.dump(data,f,indent= 4)
+        json.dump(data, f, indent=4)
+
 
 def write_json(new_data, filename, str):
     with open(filename, 'r+', encoding="utf-8") as file:
@@ -30,51 +31,43 @@ def write_json(new_data, filename, str):
 
 
 @click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
 @click.argument('output_filepath', type=click.Path())
-
-
-def main(input_filepath, output_filepath):
+def main(output_filepath):
     """ Runs data processing scripts to turn raw data from (../raw) into
         analyzed data (saved in ../processed).
     """
     path = get_project_root()
-    input_filepath = str(path) + '/' + input_filepath
-    output_filepath = str(path) + '/' + output_filepath + '/'
-
-    output = { "output" : []}
+    output_filepath = os.path.join(path, output_filepath)
+    output = {"output": []}
     save_data(output_filepath + "output.json", output)
     cnt = 0
-
-    for root,d_files, f_names in os.walk(path, topdown=False):
+    trained_ner = spacy.load("models/ner/model-best")
+    trained_spancat = spacy.load("models/spancat/model-best")
+    for root, d_files, f_names in os.walk(path, topdown=False):
         for mdF in f_names:
-            mdYes =  mdF.endswith(".md",len(mdF)-3,len(mdF))
-            if(mdYes) :
-                rootNew = root
-                rootNew = rootNew.removeprefix(str(path))
-
+            is_md_file = mdF.endswith(".md", len(mdF)-3, len(mdF))
+            if is_md_file:
+                new_root = root
+                new_root = new_root.lstrip(str(path))
                 with open(root + "/" + mdF, "r") as f:
                     text = f.read()
-
-                    trained_ner = spacy.load("models/ner/model-best")
-                    trained_spancat = spacy.load("models/spancat/model-best")
 
                     doc1 = trained_ner(text)
                     doc2 = trained_spancat(text)
                     ent = []
 
-                    for ents in doc1.ents :
+                    for ents in doc1.ents:
                         ent.append([ents.text, ents.start_char, ents.end_char, ents.label_])
 
                     spans = doc2.spans["sc"]
-                    try : 
+                    try:
                         for span, confidence in zip(spans, spans.attrs["scores"]):
-                            if(round((100*confidence)) > 80):
+                            if round((100 * confidence)) > 80:
                                 ent.append([span.text, span.start_char, span.end_char, span.label_])
                     except KeyError:
-                        print(root + '/' + mdF, "has key error")
+                        print(new_root + '/' + mdF, "has key error")
                     y = {
-                        "fileName" : root + "/" + mdF,
+                        "fileName" : new_root + "/" + mdF,
                         "text" : text,
                         "entities" : ent
                     }

@@ -1,9 +1,13 @@
+import os.path
 import click
 import logging
-from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 import json
+import spacy
+from spacy.tokens import DocBin
+import srsly
 from pathlib import Path
+
 
 def get_project_root() -> Path:
     return Path(__file__).parent.parent.parent.parent
@@ -14,29 +18,27 @@ def load_data(file):
         data = json.load(f)
     return data
 
+
 def save_data(file, data):
     with open(file, 'w', encoding="utf-8") as f:
-        json.dump(data,f,indent= 4)
+        json.dump(data, f, indent=4)
 
-import spacy
-from spacy.tokens import DocBin
-import srsly
-from pathlib import Path
 
-## some of the entities will be skipped as they dont align with token boundaries
+# some of the entities will be skipped as they don't align with token boundaries
 def convert(lang: str, input_path: Path, output_path: Path):
     nlp = spacy.blank(lang)
     db = DocBin()
-    for text, annot in srsly.read_json(input_path):
+    for text, annotation in srsly.read_json(input_path):
         doc = nlp(text)
-        ents = []
-        for start, end, label in annot["entities"]:
+        entities = []
+        for start, end, label in annotation["entities"]:
             span = doc.char_span(start, end, label=label, alignment_mode="contract")
-            if span != None :
-                ents.append(span)
-        doc.ents = ents
+            if span is not None:
+                entities.append(span)
+        doc.ents = entities
         db.add(doc)
     db.to_disk(output_path)
+
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -46,12 +48,14 @@ def main(input_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../tmp).
     """
     path = get_project_root()
-    input_filepath = str(path) + '/' + input_filepath + '/'
-    output_filepath = str(path) + '/' + output_filepath + '/'
+    input_filepath = os.path.join(path, input_filepath)
+    output_filepath = os.path.join(path, output_filepath)
 
-    convert("en", input_filepath + "train/non-overlap.json", output_filepath + "train.spacy")
-    convert("en", input_filepath + "test/non-overlap.json", output_filepath + "test.spacy")
-    
+    convert("en", Path(os.path.join(input_filepath, "train", "non-overlap.json")),
+            Path(os.path.join(output_filepath + "train.spacy")))
+    convert("en", Path(os.path.join(input_filepath, "test", "non-overlap.json")), Path(os.path.join(output_filepath,
+                                                                                                    "test.spacy")))
+
     logger = logging.getLogger(__name__)
     logger.info('making spacy data set from processed data')
 
