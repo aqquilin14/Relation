@@ -1,0 +1,318 @@
+{
+            "fileName": "/Users/pulkitt/constructor/knowledge-graph-constructor/data/raw/experience-platform.en/help/server-api/media-edge-api/overview.md",
+            "text": "---\nsolution: Experience Platform\ntitle: Media Edge APIs\ndescription: Media Edge APIs Overview\n---\n\n# Media Edge API overview\n\nMedia Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html?lang=en#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For Media Analytics customers, this makes the following features available:\n\n* With [Adobe Customer Journey Analytics](https://experienceleague.adobe.com/docs/analytics-platform/using/cja-overview/cja-overview.html?lang=en), customers can get near real-time, granular details of duration, starts, and stops to evaluate and combine for media metrics. Customers migrating from Adobe Analytics have all reporting metrics available in Adobe Customer Journey Analytics.\n\n* With [Adobe Real-Time Customer Data Platform](https://experienceleague.adobe.com/docs/experience-platform/rtcdp/overview.html), customers can enrich their real-time profiles with media consumption data.\n\n* With [Adobe Journey Optimizer](https://experienceleague.adobe.com/docs/journey-optimizer/using/get-started/get-started.html?lang=en), customers can optimize omnichannel campaigns and automate journeys with media consumption signals.\n\n\n## Optimizing media tracking data flows\n\nBoth [Media Collection APIs](https://experienceleague.adobe.com/docs/media-analytics/using/implementation/streaming-media-apis/mc-api-overview.html?lang=en&media-tracking-data-flows) and Media Edge APIs provide media tracking data as RESTful services. But using the Media Edge service has the following advantages:\n\n* It is the easiest way to incorporate XDM schemas into your data flow. \n\n* Calls are directed from a media player directly to the [Experience Edge Platform Network](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/overview.html?lang=en).\n\n* It tracks media events efficiently with a minimum of cross-server calls. \n\nThe following table shows a possible Adobe API service for various media analytics cases:\n\n| Use case | API service |\n| -------- | ----------- |\n| Adobe Experience Platform solution | Media Edge |\n| Real-time CDP + Customer Journey Analytics | Media Edge |\n| Adobe Analytics + Adobe Experience Platform solution | Media Edge |\n| Adobe Analytics only (already tracking) | Media Collection |\n\n>[!NOTE]\n>\n> The Media Collection API service for Analtyics still receives XDM data, but is not optimized for it to the extent that Media Edge service is. Depending on the data sent from the Media Player, some Analytics-only data can also be routed through the Media Edge API service. \n\nThe following graphic shows the data flows for the two API services:\n\n![Media analytics data flows](../assets/edge-api-dataflow.png)\n\n## Next steps\n\n* For more information on using Media Edge APIs, see the [Getting started documentation](getting-started.md). \n\n* For more information on working with Platform Edge, see [Installing Media Analytics with Experience Platform Edge](https://experienceleague.adobe.com/docs/media-analytics/using/implementation/implementation-edge.html?lang=en).\n\n\n\n\n",
+            "entities": [
+                [
+                    "Experience Platform",
+                    14,
+                    33,
+                    "product"
+                ],
+                [
+                    "Media Edge APIs",
+                    127,
+                    142,
+                    "process"
+                ],
+                [
+                    "event",
+                    203,
+                    208,
+                    "event"
+                ],
+                [
+                    "data",
+                    218,
+                    222,
+                    "data"
+                ],
+                [
+                    "/docs/experience-platform/xdm/home.html?lang=en#:~:text=Experience%20Data%20Model%20(XDM)%2C",
+                    295,
+                    387,
+                    "path"
+                ],
+                [
+                    "Media Analytics customers",
+                    435,
+                    460,
+                    "process"
+                ],
+                [
+                    "Adobe Customer Journey Analytics](https://experienceleague.adobe.com",
+                    516,
+                    584,
+                    "process"
+                ],
+                [
+                    "/docs/analytics-platform/using/cja-overview/cja-overview.html?lang=en",
+                    584,
+                    653,
+                    "path"
+                ],
+                [
+                    "media metrics",
+                    766,
+                    779,
+                    "metrics"
+                ],
+                [
+                    "Adobe Analytics",
+                    806,
+                    821,
+                    "product"
+                ],
+                [
+                    "reporting",
+                    831,
+                    840,
+                    "api response"
+                ],
+                [
+                    "metrics",
+                    841,
+                    848,
+                    "metrics"
+                ],
+                [
+                    "Adobe Customer Journey Analytics",
+                    862,
+                    894,
+                    "product"
+                ],
+                [
+                    "/docs/experience-platform/rtcdp/overview.html",
+                    979,
+                    1024,
+                    "path"
+                ],
+                [
+                    "Adobe Journey",
+                    1111,
+                    1124,
+                    "data"
+                ],
+                [
+                    "/docs/journey-optimizer/using/get-started/get-started.html?lang=en",
+                    1170,
+                    1236,
+                    "path"
+                ],
+                [
+                    "journeys",
+                    1297,
+                    1305,
+                    "journey"
+                ],
+                [
+                    "Optimizing media tracking data flows",
+                    1343,
+                    1379,
+                    "label"
+                ],
+                [
+                    "/docs/media-analytics/using/implementation/streaming-media-apis/mc-api-overview.html?lang=en&media-tracking-data-flows",
+                    1444,
+                    1562,
+                    "path"
+                ],
+                [
+                    "data",
+                    1607,
+                    1611,
+                    "data"
+                ],
+                [
+                    "RESTful services",
+                    1615,
+                    1631,
+                    "api"
+                ],
+                [
+                    "Media Edge service",
+                    1647,
+                    1665,
+                    "standard"
+                ],
+                [
+                    "XDM schemas",
+                    1736,
+                    1747,
+                    "schema"
+                ],
+                [
+                    "data",
+                    1758,
+                    1762,
+                    "data"
+                ],
+                [
+                    "Experience Edge Platform",
+                    1829,
+                    1853,
+                    "document"
+                ],
+                [
+                    "cross-server calls",
+                    2027,
+                    2045,
+                    "use_case"
+                ],
+                [
+                    "Adobe Experience Platform",
+                    2196,
+                    2221,
+                    "product"
+                ],
+                [
+                    "Customer Journey Analytics",
+                    2264,
+                    2290,
+                    "data"
+                ],
+                [
+                    "Adobe Analytics + Adobe Experience Platform",
+                    2308,
+                    2351,
+                    "data"
+                ],
+                [
+                    "Adobe Analytics",
+                    2378,
+                    2393,
+                    "data"
+                ],
+                [
+                    "Media Collection |",
+                    2420,
+                    2438,
+                    "description"
+                ],
+                [
+                    "Media Collection API service",
+                    2457,
+                    2485,
+                    "id"
+                ],
+                [
+                    "Media Edge service",
+                    2572,
+                    2590,
+                    "standard"
+                ],
+                [
+                    "data sent",
+                    2612,
+                    2621,
+                    "attribute"
+                ],
+                [
+                    "Analytics-only data",
+                    2650,
+                    2669,
+                    "data"
+                ],
+                [
+                    "Media Edge API service",
+                    2701,
+                    2723,
+                    "button"
+                ],
+                [
+                    "data flows",
+                    2759,
+                    2769,
+                    "feature"
+                ],
+                [
+                    "API services",
+                    2782,
+                    2794,
+                    "product"
+                ],
+                [
+                    "Media Edge APIs",
+                    2908,
+                    2923,
+                    "data"
+                ],
+                [
+                    "Getting started documentation](getting-started.md",
+                    2934,
+                    2983,
+                    "external_reference"
+                ],
+                [
+                    "Platform Edge",
+                    3027,
+                    3040,
+                    "product"
+                ],
+                [
+                    "Installing Media Analytics with Experience Platform",
+                    3047,
+                    3098,
+                    "action"
+                ],
+                [
+                    "/docs/media-analytics/using/implementation/implementation-edge.html?lang=en",
+                    3139,
+                    3214,
+                    "path"
+                ],
+                [
+                    "Experience Platform",
+                    14,
+                    33,
+                    "product"
+                ],
+                [
+                    "Adobe Analytics",
+                    806,
+                    821,
+                    "product"
+                ],
+                [
+                    "XDM schemas",
+                    1736,
+                    1747,
+                    "schema"
+                ],
+                [
+                    "XDM data",
+                    2515,
+                    2523,
+                    "data"
+                ],
+                [
+                    "Platform Edge",
+                    3027,
+                    3040,
+                    "product"
+                ],
+                [
+                    "Experience Platform",
+                    3079,
+                    3098,
+                    "product"
+                ],
+                [
+                    "Adobe Experience Platform",
+                    160,
+                    185,
+                    "product"
+                ],
+                [
+                    "Experience Edge Platform",
+                    1829,
+                    1853,
+                    "product"
+                ],
+                [
+                    "Adobe API service",
+                    2086,
+                    2103,
+                    "service"
+                ]
+            ]
+        }
