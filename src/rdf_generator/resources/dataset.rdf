@@ -1,0 +1,106 @@
+<rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:owl="http://www.w3.org/2002/07/owl#" 
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+    xmlns:aep="https://www.adobe.com/aep/" 
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#" >
+<owl:Class rdf:about="api">
+<owl:sameAs rdf:resource="aep:api"/>
+</owl:Class>
+<owl:Class rdf:about="attribute-based_access_control">
+<owl:sameAs rdf:resource="aep:attribute_based_access_control"/>
+</owl:Class>
+<owl:Class rdf:about="API">
+<owl:sameAs rdf:resource="aep:api"/>
+</owl:Class>
+<owl:Class rdf:about="Attributes">
+<owl:sameAs rdf:resource="aep:attributes"/>
+</owl:Class>
+<owl:Class rdf:about="attribute-based_access_control_API">
+<owl:sameAs rdf:resource="aep:attribute_based_access_control"/>
+</owl:Class>
+<owl:Class rdf:about="Attribute-based_access_control">
+<owl:sameAs rdf:resource="aep:attribute_based_access_control"/>
+</owl:Class>
+<owl:Class rdf:about="role-based_access_control_environment">
+<owl:sameAs rdf:resource="aep:role_based_access_control_environment"/>
+</owl:Class>
+<owl:Class rdf:about="role">
+<owl:sameAs rdf:resource="aep:role"/>
+</owl:Class>
+<owl:Class rdf:about="Policies">
+<owl:sameAs rdf:resource="aep:policy"/>
+</owl:Class>
+<owl:Class rdf:about="Attribute-based_access_control">
+<owl:sameAs rdf:resource="aep:attribute_based_access_control"/>
+</owl:Class>
+<owl:Class rdf:about="attribute-based_access_control_API">
+<owl:sameAs rdf:resource="aep:attribute_based_access_control"/>
+</owl:Class>
+<owl:Class rdf:about="API">
+<owl:sameAs rdf:resource="aep:api"/>
+</owl:Class>
+<owl:Class rdf:about="attribute-based_access_control_API">
+<owl:sameAs rdf:resource="aep:attribute_based_access_control"/>
+</owl:Class>
+<owl:Class rdf:about="API_calls">
+<owl:sameAs rdf:resource="aep:api_call"/>
+</owl:Class>
+<owl:Class rdf:about="API">
+<owl:sameAs rdf:resource="aep:api"/>
+</owl:Class>
+<owl:Class rdf:about="roles">
+<owl:sameAs rdf:resource="aep:role"/>
+</owl:Class>
+<owl:Class rdf:about="API">
+<owl:sameAs rdf:resource="aep:api"/>
+</owl:Class>
+<aep:document_id rdf:about="0fc32354-4869-4392-9501-b1dbea1bc55e"><aep:has_title rdf:parseType="Literal">Attribute-based Access Control API Guide</aep:has_title>
+<aep:has_description rdf:parseType="Literal">The Attribute-based access control API allows you to programmatically manage roles and access policies within Adobe Experience Platform</aep:has_description>
+</aep:document_id>
+<aep:product rdf:about="Adobe_Experience_Platform"><aep:has_feature><aep:attribute_based_access_control rdf:about="Attribute-based_access_control"/></aep:has_feature></aep:product>
+<aep:role rdf:about="administrators"><aep:has_function rdf:parseType="Literal">control access to specific objects and/or capabilities</aep:has_function>
+</aep:role>
+<aep:role rdf:about="administrator"><aep:has_function rdf:parseType="Literal">defines access policies that include attributes to manage user access permissions</aep:has_function>
+</aep:role>
+<aep:attributes rdf:about="Attributes"><aep:has_description rdf:parseType="Literal">metadata added to an object, such as a label added to a schema field or segment</aep:has_description>
+</aep:attributes>
+<aep:attribute_based_access_control rdf:about="attribute-based_access_control_API"><aep:has_function rdf:parseType="Literal">The attribute-based access control API is used to access roles, products, permission categories, and permission sets within Adobe Experience Platform, providing a user interface and RESTful API from which all available library resources are accessible</aep:has_function>
+</aep:attribute_based_access_control>
+<aep:product rdf:about="Experience_Platform"><aep:has_feature><aep:features rdf:about="data_governance_capabilities"/></aep:has_feature></aep:product>
+<aep:features rdf:about="data_governance_capabilities"><aep:has_description rdf:parseType="Literal">use labels and policies to control how data is used in Platform rather than which users in your organization have access to it</aep:has_description>
+</aep:features>
+<aep:role rdf:about="Roles"><aep:has_description rdf:parseType="Literal">Roles define the access that an administrator, a specialist, or an end-user has to resources in your organization. In a role-based access control environment, user access provisioning is group through common responsibilities and needs. A role has a given set of permissions and members of your organization can be assigned to one or more roles, depending on the scope of view or write access they need.</aep:has_description>
+</aep:role>
+<aep:role_based_access_control_environment rdf:about="role-based_access_control_environment"><aep:has_description rdf:parseType="Literal">user access provisioning is group through common responsibilities and needs</aep:has_description>
+</aep:role_based_access_control_environment>
+<aep:role rdf:about="role"><aep:has_description rdf:parseType="Literal">A role has a given set of permissions and members of your organization can be assigned to one or more roles, depending on the scope of view or write access they need</aep:has_description>
+</aep:role>
+<aep:policy rdf:about="Policies"><aep:has_description rdf:parseType="Literal">Policies are statements that bring attributes together to establish permissible and impermissible actions. Policies can either be local or global, and can override other policies</aep:has_description>
+</aep:policy>
+<aep:attribute_based_access_control rdf:about="Attribute-based_access_control"><aep:has_function rdf:parseType="Literal">enables administrators to control access to specific objects and/or capabilities based on attributes</aep:has_function>
+</aep:attribute_based_access_control>
+<aep:api_endpoint rdf:about="/policies_endpoint"><aep:has_function rdf:parseType="Literal">programmatically manage policies in your organization</aep:has_function>
+</aep:api_endpoint>
+<aep:api_endpoint rdf:about="/products_endpoint"><aep:has_function rdf:parseType="Literal">programmatically manage products as well as permission categories and permission sets associated with products in your organization</aep:has_function>
+</aep:api_endpoint>
+<aep:attribute_based_access_control rdf:about="attribute-based_access_control_API"><aep:has_feature><aep:api_endpoint rdf:about="/products_endpoint"/></aep:has_feature></aep:attribute_based_access_control>
+<aep:external_reference rdf:about="products_endpoint_guide"><aep:has_path rdf:parseType="Literal">./products.md</aep:has_path>
+<aep:has_description rdf:parseType="Literal">information on working with products and their corresponding permission categories and permission sets in the API</aep:has_description>
+</aep:external_reference>
+<aep:external_reference rdf:about="getting_started_guide"><aep:has_path rdf:parseType="Literal">./getting-started.md</aep:has_path>
+<aep:has_description rdf:parseType="Literal">making calls using the attribute-based access control API</aep:has_description>
+</aep:external_reference>
+<aep:external_reference rdf:about="getting_started_guide"><aep:has_path rdf:parseType="Literal">./getting-started.md</aep:has_path>
+<aep:has_description rdf:parseType="Literal">information on required headers, reading sample API calls, and more</aep:has_description>
+</aep:external_reference>
+<aep:external_reference rdf:about="roles_endpoint_guide"><aep:has_path rdf:parseType="Literal">./roles.md</aep:has_path>
+<aep:has_description rdf:parseType="Literal">information on working with roles in the API</aep:has_description>
+</aep:external_reference>
+<aep:external_reference rdf:about="policies_endpoint_guide"><aep:has_path rdf:parseType="Literal">./policies.md</aep:has_path>
+<aep:has_description rdf:parseType="Literal">information on working with policies in the API</aep:has_description>
+</aep:external_reference>
+<aep:external_reference rdf:about="Policy_Service_API_guide"><aep:has_path rdf:parseType="Literal">../../../data-governance/api/overview.md</aep:has_path>
+<aep:has_description rdf:parseType="Literal">steps on how to programmatically leverage these capabilities</aep:has_description>
+</aep:external_reference>
+</rdf:RDF>

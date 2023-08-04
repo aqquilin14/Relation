@@ -1,0 +1,38 @@
+<rdf:RDF
+    xmlns:ns="http://ns.org/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:aep="https://www.adobe.com/aep/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:j.0="aep:">
+
+    <owl:Class rdf:about="https://www.adobe.com/aep/connector"/>
+
+    <owl:Class rdf:about="https://www.adobe.com/aep/CRM_connector">
+        <rdfs:subClassOf rdf:resource="https://www.adobe.com/aep/connector"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://www.adobe.com/aep/customer_relationship_management_system_connector">
+        <owl:sameAs rdf:resource="https://www.adobe.com/CRM_connector"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.adobe.com/aep/cloud_connector">
+        <rdfs:subClassOf rdf:resource="https://www.adobe.com/aep/connector"/>
+    </owl:Class>
+    <owl:Class rdf:about="https://www.adobe.com/aep/cloud_storage_connector">
+        <owl:sameAs rdf:resource="https://www.adobe.com/cloud_connector"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="https://www.adobe.com/aep/streaming_connector">
+        <rdfs:subClassOf rdf:resource="https://www.adobe.com/aep/connector"/>
+    </owl:Class>
+
+    <rdf:Property rdf:about="https://www.adobe.com/aep/has_description"/>
+    <rdf:Property rdf:about="https://www.adobe.com/aep/has_function">
+        <rdfs:subPropertyOf rdf:resource="https://www.adobe.com/aep/has_description"/>
+    </rdf:Property>
+    <rdf:Property rdf:about="https://www.adobe.com/aep/composed_of"/>
+
+    <rdf:Property rdf:about="https://www.adobe.com/aep/has_example"/>
+
+</rdf:RDF>
