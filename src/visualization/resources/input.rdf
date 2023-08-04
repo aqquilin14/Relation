@@ -1,0 +1,56 @@
+<!--ontology on document-9 and extra-->
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:aep="https://www.adobe.com/aep/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <owl:Class rdf:about="aep:document_id"/>
+    <owl:Class rdf:about="aep:product"/>
+    <owl:Class rdf:about="aep:api"/>
+    <owl:Class rdf:about="aep:attribute"/>
+    <owl:Class rdf:about="aep:field">
+    </owl:Class>
+    <owl:Class rdf:about="aep:access_control_api">
+        <rdfs:subClassOf rdf:resource="aep:api"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:attribute_based_access_control_api">
+        <rdfs:subClassOf rdf:resource="aep:access_control_api"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:policy"/>
+    <owl:Class rdf:about="aep:access_policy">
+        <rdfs:subClassOf rdf:resource="aep:policy"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:attribute_based_access_policy">
+        <rdfs:subClassOf rdf:resource="aep:access_policy"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:role"/>
+    <owl:Class rdf:about="aep:administrator">
+        <rdfs:subClassOf rdf:resource="aep:role"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:user">
+        <rdfs:subClassOf rdf:resource="aep:role"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:access_control">
+        <owl:sameAs rdf:resource="aep:access_policy"/>
+    </owl:Class>
+    <owl:Class rdf:about="aep:permission"/>
+    <rdf:Property rdf:about="aep:has_description"/>
+    <rdf:Property rdf:about="aep:has_function">
+        <rdfs:subPropertyOf rdf:resource="aep:has_description"/>
+    </rdf:Property>
+    <owl:ObjectProperty rdf:about="aep:has_feature"/>
+
+    <owl:TransitiveProperty rdf:about="aep:has_feature"/>
+
+    <owl:Class rdf:about="aep:feature"/>
+
+    <owl:Class rdf:about="aep:left_navigation"/>
+
+    <owl:Property rdf:about="aep:has_procedure"/>
+    <owl:Property rdf:about="aep:has_prereq"/>
+
+    <owl:Class rdf:about="aep:action"/>
+
+</rdf:RDF>
