@@ -1,0 +1,17 @@
+{
+  "labels":[
+    "has_title",
+    "has_description",
+    "has_function",
+    "has_feature",
+    "has_path",
+    "refers_self",
+    "field_for",
+    "has_field",
+    "accessibility_aid",
+    "has_procedure",
+    "subTypeOf",
+    "has_prereq"
+  ],
+  "threshold":0.5
+}
